@@ -1,0 +1,11 @@
+<div class="panel">
+    @for (item of icons; track item.name) {
+      <button 
+        class="icon-button" 
+        (click)="onIconClick(item.name)"
+        [attr.aria-label]="item.name"
+      >
+        {{ item.icon }}
+      </button>
+    }
+  </div>

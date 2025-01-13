@@ -1,0 +1,14 @@
+.main-container {
+  display: flex;
+  height: 100vh;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+app-panel {
+  flex: 0 0 80px;  /* Fixed width of 80px */
+}
+
+app-writing-area {
+  flex: 1;  /* Takes up remaining space */
+}
