@@ -3,7 +3,8 @@
       <button 
         class="icon-button" 
         (click)="onIconClick(item.name)"
-        [attr.aria-label]="item.name"
+        [attr.aria-label]="item.msg"
+        [title]="item.msg"
       >
         {{ item.icon }}
       </button>

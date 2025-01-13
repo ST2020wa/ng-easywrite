@@ -2,6 +2,7 @@
   <textarea 
     placeholder="go for a write"
     [(ngModel)]="content"
+    (ngModelChange)="onContentChange()"
     class="writing-input"
   ></textarea>
 </div>
