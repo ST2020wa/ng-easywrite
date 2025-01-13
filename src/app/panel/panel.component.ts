@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { WritingService } from '../services/writing.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-panel',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.css'
 })
@@ -16,7 +18,8 @@ export class PanelComponent {
     {name:'delete',icon:'🗑️', msg: 'Delete All'}
   ];
 
-  isFullScreen = false;
+  public isFullScreen = false;
+  public isDarkMode = false;
 
   constructor(private writingService: WritingService) {}
 
@@ -26,6 +29,7 @@ export class PanelComponent {
         this.toggleFullScreen();
         break;
       case 'dark':
+        this.toggleTheme();
         break;
         case 'export':
             this.exportToTxt();
@@ -91,5 +95,15 @@ export class PanelComponent {
 
   private deleteAllInput() {
     this.writingService.clearContent();
+  }
+
+  private toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    const mainContainer = document.querySelector('.main-container');
+    const inputContainer = document.querySelector('.writing-container');
+    if (mainContainer) {
+        mainContainer.classList.toggle('dark');
+        inputContainer?.classList.toggle('dark');
+    }
   }
 } 

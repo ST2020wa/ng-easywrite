@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel" [ngClass]="{'dark': isDarkMode}">
     @for (item of icons; track item.name) {
       <button 
         class="icon-button" 

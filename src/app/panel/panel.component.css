@@ -6,6 +6,16 @@
   background-color: #f5f5f5;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  &.dark{
+    background-color: #2d2d2d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    .icon-button:hover {
+        background-color: #404040;
+      }
+    .icon-button:active {
+        background-color: #505050;
+      }
+  }
 }
 
 .icon-button {
