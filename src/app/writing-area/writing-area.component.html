@@ -3,10 +3,16 @@
     placeholder="Go for a write"
     [(ngModel)]="content"
     (ngModelChange)="onContentChange()"
+    (click)="preventClick($event)"
     class="writing-input"
   ></textarea>
     <app-word-count 
       [wordCount]="getWordCount()"
       [isDarkMode]="isDarkMode"
     ></app-word-count>
+  @if (showMessage) {
+    <div class="prevent-click-message" [class.dark]="isDarkMode">
+      Don't look back, keep writing.
+    </div>
+  }
 </div>

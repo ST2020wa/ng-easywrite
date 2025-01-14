@@ -50,3 +50,30 @@
     border-color: #9b9b9b;
   }
 }
+
+.prevent-click-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  animation: fadeInOut 2s ease-in-out;
+  z-index: 1000;
+  font-family: Palatino;
+}
+
+.prevent-click-message.dark {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -40%); }
+  20% { opacity: 1; transform: translate(-50%, -50%); }
+  80% { opacity: 1; transform: translate(-50%, -50%); }
+  100% { opacity: 0; transform: translate(-50%, -40%); }
+}

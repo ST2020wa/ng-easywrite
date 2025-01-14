@@ -47,17 +47,23 @@ import { FormsModule } from '@angular/forms';
       background-color: #2d2d2d;
       color: #ffffff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      input {
+        background-color:#e9e9e9;
+      }
     }
 
     input {
       width: 60px;
       margin: 0 0.5rem;
       padding: 0.2rem;
+      border: none;
     }
 
     button {
       margin-left: 0.5rem;
       padding: 0.2rem 0.8rem;
+      border: none;
+      border-radius: 5px;
     }
 
     .warning {
