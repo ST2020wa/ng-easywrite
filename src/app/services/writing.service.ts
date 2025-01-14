@@ -14,6 +14,5 @@ export class WritingService {
 
   clearContent() {
     this.contentSource.next('');
-    localStorage.removeItem('writing-content');
-  }
+    localStorage.removeItem('writing-content');}
 } 

@@ -9,11 +9,6 @@
 .main-container.dark {
   background-color: #1a1a1a;
   color: #ffffff;
-  app-panel {
-    panel {
-      background-color: blue !important;
-    }
-  }
 }
 
 app-panel {

@@ -5,4 +5,8 @@
     (ngModelChange)="onContentChange()"
     class="writing-input"
   ></textarea>
+    <app-word-count 
+      [wordCount]="getWordCount()"
+      [isDarkMode]="isDarkMode"
+    ></app-word-count>
 </div>

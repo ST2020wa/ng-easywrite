@@ -1,16 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WritingService } from '../services/writing.service';
 import { Subscription } from 'rxjs';
+import { WordCountComponent } from '../word-count/word-count.component';
 
 @Component({
   selector: 'app-writing-area',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, WordCountComponent],
   templateUrl: './writing-area.component.html',
   styleUrl: './writing-area.component.css'
 })
 export class WritingAreaComponent implements OnInit, OnDestroy {
+  @Input() isDarkMode: boolean = false;
   private readonly STORAGE_KEY = 'writing-content';
   content: string = '';
   private subscription: Subscription;
@@ -19,7 +21,7 @@ export class WritingAreaComponent implements OnInit, OnDestroy {
     // Subscribe to content changes from service
     this.subscription = this.writingService.currentContent.subscribe(
       content => this.content = content
-    );
+      )
   }
 
   ngOnInit() {
@@ -38,5 +40,9 @@ export class WritingAreaComponent implements OnInit, OnDestroy {
   onContentChange() {
     localStorage.setItem(this.STORAGE_KEY, this.content);
     this.writingService.updateContent(this.content);
+  }
+
+  getWordCount(): number {
+    return this.content.trim() ? this.content.trim().split(/\s+/).length : 0;
   }
 }

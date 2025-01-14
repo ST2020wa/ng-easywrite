@@ -19,8 +19,8 @@ export class PanelComponent implements OnInit {
   ];
 
   public isFullScreen = false;
+  public isDarkMode = false;
   private readonly THEME_KEY = 'dark-mode';
-  isDarkMode = false;
 
   constructor(private writingService: WritingService) {}
 
@@ -112,5 +112,6 @@ export class PanelComponent implements OnInit {
     localStorage.setItem(this.THEME_KEY, this.isDarkMode.toString());
     document.querySelector('.main-container')?.classList.toggle('dark');
     document.querySelector('.writing-container')?.classList.toggle('dark');
+    document.querySelector('.word-count')?.classList.toggle('dark');
   }
 } 
