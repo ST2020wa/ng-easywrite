@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
         <button (click)="stop()">Stop</button>
       }
       @if (showWarning) {
-        <div class="warning">4 hours is great enough for a break :-)</div>
+        <div class="warning">4-hour is great enough for a break :-)</div>
       }
     </div>
   `,
@@ -69,10 +69,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class CountdownComponent {
   @Input() isDarkMode: boolean = false;
+  @Output() stopDialogChange = new EventEmitter<boolean>();
+  
   minutes: number = 25;
   timeLeft: number = 0;
   isRunning: boolean = false;
   showWarning: boolean = false;
+  showStopDialog: boolean = false;
   private timer: any;
 
   validateTime() {
@@ -99,6 +102,8 @@ export class CountdownComponent {
   stop() {
     this.isRunning = false;
     clearInterval(this.timer);
+    this.showStopDialog = true;
+    this.stopDialogChange.emit(true);
   }
 
   formatTime(seconds: number): string {

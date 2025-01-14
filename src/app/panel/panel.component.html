@@ -11,5 +11,14 @@
       </button>
     }
   </div>
-  <app-countdown [hidden]="!isCountDownVisible" [isDarkMode]="isDarkMode" class="countdown-wrapper"></app-countdown>
+  <app-countdown [hidden]="!isCountDownVisible"
+    [isDarkMode]="isDarkMode" 
+    (stopDialogChange)="onStopDialogChange(true)" 
+    class="countdown-wrapper"
+  ></app-countdown>
+  @if (isFloatingMessageVisible) {
+    <div class="floating-message" [ngClass]="{'dark': isDarkMode}">
+      Time up and good job!
+    </div>
+  }
 </div>

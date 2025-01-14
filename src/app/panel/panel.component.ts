@@ -22,7 +22,9 @@ export class PanelComponent implements OnInit {
   public isFullScreen = false;
   public isDarkMode = false;
   public isCountDownVisible = false;
+  public isStopDialogVisible = false;
   private readonly THEME_KEY = 'dark-mode';
+  public isFloatingMessageVisible = false;
 
   constructor(private writingService: WritingService) {}
 
@@ -116,5 +118,14 @@ export class PanelComponent implements OnInit {
     document.querySelector('.main-container')?.classList.toggle('dark');
     document.querySelector('.writing-container')?.classList.toggle('dark');
     document.querySelector('.word-count')?.classList.toggle('dark');
+  }
+
+  public onStopDialogChange(show: boolean) {
+    if (show) {
+      this.isFloatingMessageVisible = true;
+      setTimeout(() => {
+        this.isFloatingMessageVisible = false;
+      }, 3000);
+    }
   }
 } 

@@ -34,4 +34,29 @@
 
 .icon-button:active {
   background-color: #d0d0d0;
+}
+
+.floating-message {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fadeInOut 3s ease-in-out;
+  z-index: 1000;
+}
+
+.floating-message.dark {
+  background-color: #45a049;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -20px); }
+  10% { opacity: 1; transform: translate(-50%, 0); }
+  90% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -20px); }
 } 
