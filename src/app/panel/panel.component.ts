@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WritingService } from '../services/writing.service';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.css'
 })
-export class PanelComponent {
+export class PanelComponent implements OnInit {
   icons = [
     {name:'full',icon:'🔲', msg: 'Full Screen'},
     {name: 'dark', icon: '🌓', msg: 'Switch Dark Theme'},
@@ -19,9 +19,19 @@ export class PanelComponent {
   ];
 
   public isFullScreen = false;
-  public isDarkMode = false;
+  private readonly THEME_KEY = 'dark-mode';
+  isDarkMode = false;
 
   constructor(private writingService: WritingService) {}
+
+  ngOnInit() {
+    // Load saved theme preference
+    const savedTheme = localStorage.getItem(this.THEME_KEY);
+    if (savedTheme === 'true') {
+      this.isDarkMode = true;
+      document.querySelector('.main-container')?.classList.add('dark');
+    }
+  }
 
   onIconClick(iconName: string) {
     switch (iconName) {
@@ -99,11 +109,8 @@ export class PanelComponent {
 
   private toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
-    const mainContainer = document.querySelector('.main-container');
-    const inputContainer = document.querySelector('.writing-container');
-    if (mainContainer) {
-        mainContainer.classList.toggle('dark');
-        inputContainer?.classList.toggle('dark');
-    }
+    localStorage.setItem(this.THEME_KEY, this.isDarkMode.toString());
+    document.querySelector('.main-container')?.classList.toggle('dark');
+    document.querySelector('.writing-container')?.classList.toggle('dark');
   }
 } 
