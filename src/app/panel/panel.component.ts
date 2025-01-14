@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { WritingService } from '../services/writing.service';
 import { CommonModule } from '@angular/common';
+import { CountdownComponent } from '../countdown/countdown.component';
 
 @Component({
   selector: 'app-panel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CountdownComponent],
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.css'
 })
@@ -14,12 +15,13 @@ export class PanelComponent implements OnInit {
     {name:'full',icon:'🔲', msg: 'Full Screen'},
     {name: 'dark', icon: '🌓', msg: 'Switch Dark Theme'},
     {name: 'export', icon: '💾', msg:'Save As'},
-    {name: 'timer', icon: '⏳', msg: 'Set Timer'},
+    {name: 'timer', icon: '⏳', msg: 'Show/Hide Count Down'},
     {name:'delete',icon:'🗑️', msg: 'Delete All'}
   ];
 
   public isFullScreen = false;
   public isDarkMode = false;
+  public isCountDownVisible = false;
   private readonly THEME_KEY = 'dark-mode';
 
   constructor(private writingService: WritingService) {}
@@ -45,6 +47,7 @@ export class PanelComponent implements OnInit {
             this.exportToTxt();
             break;
       case 'timer':
+        this.isCountDownVisible = !this.isCountDownVisible;
         break;
         case 'delete':
             if (confirm('Are you sure you want to delete all content?')) {
