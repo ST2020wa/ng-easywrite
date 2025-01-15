@@ -14,6 +14,7 @@ import { WordCountComponent } from '../word-count/word-count.component';
 export class WritingAreaComponent implements OnInit, OnDestroy {
   @Input() isDarkMode: boolean = false;
   private readonly STORAGE_KEY = 'writing-content';
+  private readonly THEME_KEY = 'dark-mode';
   content: string = '';
   private subscription: Subscription;
   showMessage = false;
@@ -31,6 +32,12 @@ export class WritingAreaComponent implements OnInit, OnDestroy {
       this.content = savedContent;
       this.writingService.updateContent(savedContent);
     }
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem(this.THEME_KEY);
+        if (savedTheme === 'true') {
+          this.isDarkMode = true;
+          document.querySelector('.writing-container')?.classList.add('dark');
+        }
   }
 
   ngOnDestroy() {
