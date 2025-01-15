@@ -7,6 +7,7 @@
     class="writing-input"
   ></textarea>
     <app-word-count 
+    [isHidden]="isHidden"
       [wordCount]="getWordCount()"
       [isDarkMode]="isDarkMode"
     ></app-word-count>

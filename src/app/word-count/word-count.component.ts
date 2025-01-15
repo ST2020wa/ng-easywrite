@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="word-count" [ngClass]="{'dark': isDarkMode}">
+    <div class="word-count" [ngClass]="{'hidden': isHidden}" [ngClass]="{'dark': isDarkMode}">
       {{ wordCount }} words
     </div>
   `,
@@ -23,7 +23,11 @@ import { CommonModule } from '@angular/common';
       font-size: 0.9rem;
       font-family: Palatino;
       transition: all 0.3s ease;
-      cursor: pointer;
+      cursor: default;
+      user-select: none;
+      &.hidden {
+        visibility: hidden;
+      }
       &.dark{
     background-color: #2d2d2d;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -39,4 +43,5 @@ import { CommonModule } from '@angular/common';
 export class WordCountComponent {
   @Input() wordCount: number = 0;
   @Input() isDarkMode: boolean = false;
+  @Input() public isHidden:boolean=false;
 } 

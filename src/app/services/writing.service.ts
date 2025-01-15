@@ -7,6 +7,12 @@ import { BehaviorSubject } from 'rxjs';
 export class WritingService {
   private contentSource = new BehaviorSubject<string>('');
   currentContent = this.contentSource.asObservable();
+  private wordCountVisibilitSource = new BehaviorSubject<boolean>(false);
+  showWordCount = this.wordCountVisibilitSource.asObservable();
+
+  toggleVisibility() {
+    this.wordCountVisibilitSource.next(!this.wordCountVisibilitSource.value);
+  }
 
   updateContent(content: string) {
     this.contentSource.next(content);

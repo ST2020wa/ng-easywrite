@@ -18,6 +18,7 @@ export class WritingAreaComponent implements OnInit, OnDestroy {
   content: string = '';
   private subscription: Subscription;
   showMessage = false;
+  public isHidden: boolean = false;
 
   constructor(private writingService: WritingService) {
     // Subscribe to content changes from service
@@ -38,6 +39,9 @@ export class WritingAreaComponent implements OnInit, OnDestroy {
           this.isDarkMode = true;
           document.querySelector('.writing-container')?.classList.add('dark');
         }
+        this.writingService.showWordCount.subscribe(visible => {
+          this.isHidden = !visible; // 订阅布尔值变化
+        });
   }
 
   ngOnDestroy() {

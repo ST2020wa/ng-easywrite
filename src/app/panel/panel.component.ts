@@ -15,7 +15,8 @@ export class PanelComponent implements OnInit {
     {name:'full',icon:'🔲', msg: 'Full Screen'},
     {name: 'dark', icon: '🌓', msg: 'Switch Dark Theme'},
     {name: 'export', icon: '💾', msg:'Save As'},
-    {name: 'timer', icon: '⏳', msg: 'Show/Hide Count Down'},
+    {name: 'count', icon:'📈', msg: 'Show/Hide Word Count'},
+    {name: 'timer', icon: '⏳', msg: 'Show/Hide Timer'},
     {name:'delete',icon:'🗑️', msg: 'Delete All'}
   ];
 
@@ -48,6 +49,9 @@ export class PanelComponent implements OnInit {
         case 'export':
             this.exportToTxt();
             break;
+            case 'count':
+              this.toggleWordCount();
+              break;
       case 'timer':
         this.isCountDownVisible = !this.isCountDownVisible;
         break;
@@ -59,6 +63,10 @@ export class PanelComponent implements OnInit {
       default:
         console.log(`Unhandled icon click: ${iconName}`);
     }
+  }
+
+  private toggleWordCount() {
+    this.writingService.toggleVisibility();
   }
 
   private exportToTxt() {
