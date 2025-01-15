@@ -27,10 +27,6 @@ EasyWrite is built on the principle that good writing comes from continuous flow
    - View word count
 3. Focus on moving forward - the app will help you avoid looking back
 
-## Known Issues
-
-- **Dark Theme Inconsistency**: The text area's dark theme occasionally displays inverted colors compared to the rest of the UI. This issue is currently under investigation and will be fixed within a week.
-
 ## Notice
 
 This project is inspired by [JustWrite](https://www.justwrite.page/). It is intended for personal use only. If the JustWrite team finds this inappropriate, please let me know to take the necessary actions.
