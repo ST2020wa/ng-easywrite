@@ -4,9 +4,6 @@ For installation and development instructions, see `userguide.md` in the same fo
 
 A minimalist writing application designed to help you focus on writing without looking back. Built with Angular.
 
-<img width="898" alt="Screen Shot 2025-01-16 at 2 31 34 PM" src="https://github.com/user-attachments/assets/7c4b15d4-5bd6-48db-994d-6d0867335105" />
-
-
 ## Key Features
 
 - **Forward-Only Writing**: Prevents editing of previous paragraphs to maintain flow and reduce self-editing
@@ -15,6 +12,8 @@ A minimalist writing application designed to help you focus on writing without l
 - **Timer**: Built-in countdown timer for timed writing sessions (up to 4 hours)
 - **Dark Mode**: Eye-friendly dark theme for comfortable writing
 - **Auto-Save**: Automatically saves your work to localStorage
+
+<img width="714" alt="Screen Shot 2025-01-16 at 2 43 12 PM" src="https://github.com/user-attachments/assets/6d83b33c-90fd-4181-8b8b-f8843fb9994a" />
 
 ## Design Philosophy
 
